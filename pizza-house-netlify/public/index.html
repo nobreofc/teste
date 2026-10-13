@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Pizza House Nova Cruz – Peça online</title>
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--o:#f7941d;--g:#6cc24a;--card:#161616;--line:#2c2c2c;--mt:#b5b5b5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0a0a;color:#fff;font:400 15px Poppins,system-ui,sans-serif;padding-bottom:96px;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0}
+.hero{position:relative;text-align:center;padding:28px 16px 34px;background:radial-gradient(circle at 50% 0,#2a1704,#0a0a0a 70%);overflow:hidden}
+.hero img{width:200px;max-width:55%;animation:pop 1s ease both}
+.hero h1{font:400 28px 'Kaushan Script',cursive;color:var(--o);margin:6px 0}
+.hero p{color:var(--mt);max-width:420px;margin:0 auto 16px}
+.btn{background:var(--o);color:#111;font-weight:700;padding:13px 24px;border-radius:30px;display:inline-block;text-decoration:none;box-shadow:0 0 0 0 #f7941d88;animation:pulse 2s infinite}
+.pz{width:84px;height:84px;margin:0 auto 10px;animation:spin 14s linear infinite}
+.fl{position:absolute;top:100%;font-size:26px;opacity:.5;animation:up linear infinite;pointer-events:none}
+.info{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px;font-size:12px}
+.info span{border:1px solid var(--line);padding:6px 12px;border-radius:20px;background:#111}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#0a0a0aee;backdrop-filter:blur(8px);display:flex;gap:8px;overflow-x:auto;padding:10px 12px;border-bottom:1px solid var(--line)}
+nav a{white-space:nowrap;color:#fff;text-decoration:none;border:1px solid var(--line);padding:7px 14px;border-radius:20px;font-size:13px}
+nav a:active{background:var(--o);color:#111}
+main{max-width:760px;margin:0 auto;padding:0 14px}
+h2{font:400 26px 'Kaushan Script',cursive;color:var(--o);margin:26px 0 12px}
+h2.top{color:#fff}h2.top b{color:var(--g)}
+.card{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:10px;animation:fade .5s both}
+.card.t{border-color:var(--o);box-shadow:0 0 18px #f7941d33}
+.em{width:64px;height:64px;flex:none;border-radius:50%;background:#26180a;display:grid;place-items:center;font-size:32px;border:2px solid var(--o)}
+.inf{flex:1;min-width:0}.inf h3{font-size:15px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.hot{font-size:10px;background:var(--o);color:#111;padding:2px 8px;border-radius:10px;font-weight:700;animation:pulse 2s infinite}
+.inf p{font-size:12px;color:var(--mt);margin:3px 0 8px}
+.pr{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.pr b{color:var(--o)}
+.add{background:var(--o);color:#111;font-weight:700;padding:8px 14px;border-radius:20px;font-size:13px}
+.add:active{transform:scale(.92)}
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:#0a0a0af2;border-top:1px solid var(--o);display:none;justify-content:space-between;align-items:center}
+#bar.on{display:flex}#bar.bump{animation:bump .4s}
+.ov{position:fixed;inset:0;z-index:30;background:#000000cc;display:none}
+.ov.on{display:block}
+.sh{position:absolute;left:0;right:0;bottom:0;max-height:92%;overflow:auto;background:#121212;border-radius:22px 22px 0 0;border-top:2px solid var(--o);padding:18px 16px calc(24px + env(safe-area-inset-bottom,0px));animation:slide .3s both}
+.full{top:0;border-radius:0;max-height:100%;max-width:760px;margin:0 auto}
+.sh h3{font:400 24px 'Kaushan Script',cursive;color:var(--o);margin-bottom:10px}
+.sh h4{margin:18px 0 8px;font-size:14px;color:var(--g)}
+.opt{display:flex;flex-wrap:wrap;gap:8px}
+.opt label{flex:1 1 130px;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:13px;cursor:pointer;display:block;background:#1a1a1a}
+.opt input{display:none}.opt input:checked+span{color:var(--o);font-weight:700}
+.opt label:has(input:checked){border-color:var(--o);background:#2a1a09}
+input[type=text],input[type=tel],textarea{width:100%;background:#1a1a1a;border:1px solid var(--line);color:#fff;border-radius:12px;padding:12px;font:inherit;margin-bottom:8px}
+input:focus,textarea:focus{outline:2px solid var(--o)}
+.row{display:flex;gap:8px}.row>*{flex:1}
+.it{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.it small{display:block;color:var(--mt)}
+.q{display:flex;align-items:center;gap:10px}
+.q button{width:30px;height:30px;border-radius:50%;background:#2a2a2a;color:#fff;font-size:18px}
+.chip{display:inline-block;margin:0 6px 6px 0;border:1px solid var(--g);color:var(--g);background:0;padding:8px 12px;border-radius:20px;font-size:13px}
+.tot{margin-top:16px;font-size:14px}.tot div{display:flex;justify-content:space-between;padding:3px 0}
+.tot .g{font-size:20px;font-weight:800;color:var(--o);border-top:1px solid var(--line);margin-top:6px;padding-top:8px}
+.wa{width:100%;background:#25d366;color:#052;font-weight:800;padding:15px;border-radius:30px;margin-top:16px;font-size:16px;display:block;text-align:center;text-decoration:none}
+.x{position:absolute;right:14px;top:14px;background:#2a2a2a;color:#fff;width:34px;height:34px;border-radius:50%;font-size:18px}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--o);color:#111;font-weight:700;padding:10px 18px;border-radius:20px;z-index:50;display:none;font-size:13px;text-align:center}
+footer{text-align:center;color:var(--mt);font-size:12px;padding:30px 0}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes up{to{transform:translateY(-130vh) rotate(360deg)}}
+@keyframes pop{from{transform:scale(.5);opacity:0}}@keyframes fade{from{opacity:0;transform:translateY(12px)}}
+@keyframes pulse{70%{box-shadow:0 0 0 12px #f7941d00}}@keyframes slide{from{transform:translateY(100%)}}
+@keyframes bump{50%{transform:scale(1.04)}}
+.sign{width:min(80vw,350px);display:block;margin:-10px auto 0;transform-origin:50% 0;animation:swing 6s ease-in-out infinite;filter:drop-shadow(0 0 16px #f7941d77)}
+.neon{fill:none;stroke:#f7941d;stroke-width:7;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:2000;stroke-dashoffset:2000;animation:draw 2.4s .2s forwards,flick 5s 3s infinite}
+.tx{font-family:'Kaushan Script',cursive;opacity:0;animation:fadein 1s 1.6s forwards,flick 6s 4s infinite}
+@keyframes draw{to{stroke-dashoffset:0}}@keyframes fadein{to{opacity:1}}@keyframes swing{50%{transform:rotate(1.6deg)}}@keyframes flick{0%,90%,94%,100%{opacity:1}92%,96%{opacity:.45}}
+</style></head><body>
+<header class="hero" id="hero">
+<svg class="sign" viewBox="0 -70 580 810" role="img" aria-label="Pizza House Petiscaria Nova Cruz">
+<path d="M130 -70V205M440 -70V196" stroke="#555" stroke-width="3" stroke-dasharray="6 5"/>
+<g class="sg"><path class="neon" d="M62 212L240 32L262 44L525 215L507 240L282 92L84 238Z"/><path class="neon" d="M130 205L150 235M440 196L425 232"/>
+<path class="neon" style="stroke:#6cc24a" d="M228 232C222 205 238 190 268 195C272 222 258 240 228 232Z"/>
+<path class="neon" d="M248 452L280 565L340 452"/><path class="neon" style="stroke-width:5" d="M195 398Q290 412 372 382"/>
+<text x="290" y="320" text-anchor="middle" class="tx" style="font-size:112px;fill:#f7941d">Pizza</text>
+<text x="290" y="385" text-anchor="middle" class="tx" style="font-size:66px;fill:#fff;paint-order:stroke;stroke:#000;stroke-width:3">House</text>
+<text x="290" y="440" text-anchor="middle" class="tx" style="font-size:28px;fill:#fff">Petiscaria</text>
+<text x="290" y="700" text-anchor="middle" textLength="500" lengthAdjust="spacingAndGlyphs" style="font:800 80px Poppins,sans-serif;fill:#f7941d;stroke:#fff;stroke-width:5;paint-order:stroke" class="tx">Nova Cruz</text></g></svg>
+<h1>Peça sua pizza quentinha!</h1>
+<p>Monte seu pedido em poucos toques e receba a comanda direto no WhatsApp da loja.</p>
+<a class="btn" href="#menu">🍕 Ver cardápio</a>
+<div class="info"><span>🛵 Entrega em Nova Cruz</span><span>🔥 Forno a lenha quente</span><span>🌿 Ingredientes frescos</span></div>
+</header>
+<nav id="nav"></nav>
+<main id="menu"></main>
+<footer>🍕 Pizza House Petiscaria · Nova Cruz – RN</footer>
+<div id="bar"><div><small id="bc"></small><br><b id="bt" style="color:var(--o);font-size:18px"></b></div><button class="add" style="padding:12px 22px;font-size:15px" onclick="openCo()">Ver pedido 🛒</button></div>
+<div class="ov" id="ovs" onclick="if(event.target==this)closeS()"><div class="sh" id="sheet"></div></div>
+<div class="ov" id="ovc"><div class="sh full">
+<button class="x" onclick="closeCo()">✕</button><h3>🛒 Seu pedido</h3>
+<div id="coItems"></div><div id="sug"></div>
+<h4>🍴 Precisa de talheres?</h4>
+<div class="opt"><label><input type="radio" name="tal" value="Sim, com talheres" checked><span>Sim, preciso</span></label><label><input type="radio" name="tal" value="Não, sem talheres"><span>Não, obrigado 🌱</span></label></div>
+<h4>🛵 Como quer receber?</h4>
+<div class="opt"><label><input type="radio" name="tipo" value="e" checked onchange="tipo()"><span>🛵 Entrega</span></label><label><input type="radio" name="tipo" value="r" onchange="tipo()"><span>🏪 Retirar na loja</span></label></div>
+<h4>👤 Seus dados</h4>
+<input type="text" id="nome" placeholder="Seu nome"><input type="tel" id="fone" placeholder="Seu telefone / WhatsApp">
+<div id="addr"><input type="text" id="rua" placeholder="Rua / Avenida"><div class="row"><input type="text" id="num" placeholder="Número"><input type="text" id="bai" placeholder="Bairro"></div><input type="text" id="ref" placeholder="Ponto de referência (opcional)"></div>
+<h4>💳 Forma de pagamento</h4>
+<div class="opt"><label><input type="radio" name="pg" value="Pix" onchange="pg()"><span>💠 Pix</span></label><label><input type="radio" name="pg" value="Cartão (na entrega)" onchange="pg()"><span>💳 Cartão</span></label><label><input type="radio" name="pg" value="Dinheiro" onchange="pg()"><span>💵 Dinheiro</span></label></div>
+<input type="text" id="troco" placeholder="Troco para quanto?" style="display:none;margin-top:8px">
+<h4>📝 Observações</h4><textarea id="obs" rows="2" placeholder="Ex.: sem cebola, cortar em 8 pedaços..."></textarea>
+<div class="tot" id="tot"></div>
+<button class="wa" onclick="send()">📲 Enviar pedido pelo WhatsApp</button>
+</div></div>
+<div class="ov" id="ovd"><div class="sh" style="text-align:center"><div style="font-size:60px">✅🍕</div><h3>Pedido pronto!</h3><p style="color:var(--mt)">Toque no botão abaixo para abrir o WhatsApp e enviar sua comanda para a Pizza House.</p><a class="wa" id="walink" target="_blank" rel="noopener">📲 Abrir WhatsApp</a><button class="add" style="margin-top:14px" onclick="location.reload()">Fazer novo pedido</button></div></div>
+<div id="toast"></div>
+<script>
+const SZ=['Média (6 fatias)','Grande (8 fatias)'],BD=[['Sem borda',0],['Catupiry',8],['Cheddar',8],['Chocolate',8]];
+const CATS={pz:['🍕','Pizzas Salgadas'],dc:['🍫','Pizzas Doces'],pt:['🍟','Petiscaria'],bb:['🥤','Bebidas']};
+let MENU=[],FEE=5;const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=s=>document.querySelector(s),R=n=>'R$ '+n.toFixed(2).replace('.',',');
+let cart=[],S=null;
+const by=id=>MENU.find(x=>x.id==id);
+const card=(i,t)=>`<div class="card${t?' t':''}"><div class="em">${i.e}</div><div class="inf"><h3>${i.n}${i.pr?'<span class="hot" style="background:var(--g)">🏷️ -'+i.pr+'%</span>':''}${t?'<span class="hot">🔥 Mais pedido</span>':''}</h3><p>${i.d}</p><div class="pr"><b>${i.pr?'<s style="color:var(--mt);font-size:11px;font-weight:400">'+R(typeof i.o=='object'?i.o[0]:i.o)+'</s> ':''}${typeof i.p=='object'?'a partir de '+R(i.p[0]):R(i.p)}</b><button class="add" onclick="pick('${i.id}')">+ Adicionar</button></div></div></div>`;
+function render(){
+ const top=MENU.filter(i=>i.c!='bb').sort((a,b)=>b.s-a.s).slice(0,4),ids=top.map(i=>i.id),pr=MENU.filter(i=>i.pr);
+ let h=pr.length?`<h2 id="promo">🏷️ <b style="color:var(--g)">Promoções</b></h2>`+pr.map(i=>card(i,0)).join(''):'',n=pr.length?'<a href="#promo">🏷️ Promoções</a>':'';
+ h+=`<h2 class="top" id="top">🔥 Os <b>mais pedidos</b></h2>`+top.map(i=>card(i,1)).join('');n+='<a href="#top">🔥 Mais pedidos</a>';
+ for(const k in CATS){const L=MENU.filter(i=>i.c==k).sort((a,b)=>b.s-a.s);if(!L.length)continue;h+=`<h2 id="c${k}">${CATS[k][0]} ${CATS[k][1]}</h2>`+L.map(i=>card(i,ids.includes(i.id)&&k!='bb')).join('');n+=`<a href="#c${k}">${CATS[k][0]} ${CATS[k][1]}</a>`}
+ $('#menu').innerHTML=h;$('#nav').innerHTML=n}
+function toast(m){const t=$('#toast');t.textContent=m;t.style.display='block';clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',2200)}
+function pick(id){const i=by(id);if(typeof i.p=='number'){addC({k:id,id:i.id,sz:0,bd:0,n:i.n,det:'',price:i.p,q:1,bb:i.c=='bb'});return}S={i,sz:0,bd:0,q:1};sheet();$('#ovs').classList.add('on')}
+function sheet(){const{i,sz,bd,q}=S,pz=i.c=='pz';
+ $('#sheet').innerHTML=`<button class="x" onclick="closeS()">✕</button><h3>${i.e} ${i.n}</h3><p style="color:var(--mt);font-size:13px">${i.d}</p><h4>📏 Tamanho</h4><div class="opt">${SZ.map((s,x)=>`<label><input type="radio" name="sz" ${x==sz?'checked':''} onchange="S.sz=${x};sheet()"><span>${s}<br>${R(i.p[x])}</span></label>`).join('')}</div>`+
+ (pz?`<h4>🧀 Borda recheada</h4><div class="opt">${BD.map((b,x)=>`<label><input type="radio" name="bd" ${x==bd?'checked':''} onchange="S.bd=${x};sheet()"><span>${b[0]}${b[1]?' +'+R(b[1]):''}</span></label>`).join('')}</div>`:'')+
+ `<h4>Quantidade</h4><div class="q"><button onclick="S.q=Math.max(1,S.q-1);sheet()">−</button><b>${q}</b><button onclick="S.q++;sheet()">+</button></div><button class="wa" style="background:var(--o);color:#111" onclick="addPz()">Adicionar · ${R((i.p[sz]+(pz?BD[bd][1]:0))*q)}</button>`}
+function addPz(){const{i,sz,bd,q}=S,b=i.c=='pz'?BD[bd]:['',0];addC({k:i.id+'-'+sz+'-'+bd,id:i.id,sz,bd,n:i.n,det:SZ[sz]+(b[1]?' + borda '+b[0]:''),price:i.p[sz]+b[1],q,bb:0});closeS()}
+function closeS(){$('#ovs').classList.remove('on')}
+function addC(o){const f=cart.find(x=>x.k==o.k);f?f.q+=o.q:cart.push(o);toast('✅ '+o.n+' adicionado!');upd()}
+function upd(){const n=cart.reduce((a,x)=>a+x.q,0),t=cart.reduce((a,x)=>a+x.q*x.price,0),b=$('#bar');b.classList.toggle('on',n>0);$('#bc').textContent=n+(n>1?' itens':' item')+' no pedido';$('#bt').textContent=R(t);b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump');if($('#ovc').classList.contains('on'))renderCo()}
+function chg(k,d){const x=cart.find(y=>y.k==k);x.q+=d;if(x.q<1)cart=cart.filter(y=>y!=x);if(!cart.length)closeCo();upd()}
+function openCo(){renderCo();$('#ovc').classList.add('on')}function closeCo(){$('#ovc').classList.remove('on')}
+const isE=()=>document.querySelector('[name=tipo]:checked').value=='e';
+function tipo(){$('#addr').style.display=isE()?'block':'none';renderCo()}
+function pg(){$('#troco').style.display=document.querySelector('[name=pg]:checked').value=='Dinheiro'?'block':'none'}
+const sub=()=>cart.reduce((a,x)=>a+x.q*x.price,0);
+function renderCo(){
+ $('#coItems').innerHTML=cart.map(x=>`<div class="it"><div>${x.n}${x.det?`<small>${x.det}</small>`:''}<small style="color:var(--o)">${R(x.price*x.q)}</small></div><div class="q"><button onclick="chg('${x.k}',-1)">−</button><b>${x.q}</b><button onclick="chg('${x.k}',1)">+</button></div></div>`).join('');
+ $('#sug').innerHTML=cart.some(x=>x.bb)?'':`<h4>🥤 Que tal um refri gelado?</h4>`+MENU.filter(i=>i.c=='bb').slice(0,4).map(i=>`<button class="chip" onclick="pick('${i.id}')">${i.e} ${i.n} · ${R(i.p)}</button>`).join('');
+ const f=isE()?FEE:0;$('#tot').innerHTML=`<div><span>Subtotal</span><span>${R(sub())}</span></div><div><span>${isE()?'🛵 Taxa de entrega':'🏪 Retirada na loja'}</span><span>${isE()?R(f):'Grátis'}</span></div><div class="g"><span>Total</span><span>${R(sub()+f)}</span></div>`}
+async function send(){
+ const v=id=>$('#'+id).value.trim(),e=isE(),p=document.querySelector('[name=pg]:checked');
+ if(!cart.length)return toast('Seu pedido está vazio');
+ if(!v('nome')||!v('fone'))return toast('Informe seu nome e telefone');
+ if(e&&(!v('rua')||!v('num')||!v('bai')))return toast('Preencha o endereço de entrega');
+ if(!p)return toast('Escolha a forma de pagamento');
+ try{const r=await fetch('/api/order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:cart.map(x=>({id:x.id,sz:x.sz,bd:x.bd,q:x.q})),tipo:e?'e':'r',nome:v('nome'),fone:v('fone'),rua:v('rua'),num:v('num'),bai:v('bai'),ref:v('ref'),tal:document.querySelector('[name=tal]:checked').value,pg:p.value,troco:v('troco'),obs:v('obs')})}),j=await r.json();
+ if(!r.ok)return toast(j.error||'Erro ao enviar');
+ $('#walink').href=j.url;closeCo();$('#ovd').classList.add('on');window.open(j.url,'_blank')}catch(_){toast('Sem conexão, tente de novo')}}
+for(let i=0;i<9;i++){const s=document.createElement('span');s.className='fl';s.textContent=['🍕','🧀','🍅','🌿','🔥'][i%5];s.style.cssText=`left:${i*11}%;animation-duration:${9+i*1.7}s;animation-delay:${-i*2}s`;$('#hero').appendChild(s)}
+tipo();fetch('/api/menu').then(r=>r.json()).then(d=>{FEE=d.fee;MENU=d.items.map(i=>({...i,n:esc(i.n),d:esc(i.d),e:esc(i.e)}));render();renderCo()}).catch(()=>{$('#menu').innerHTML='<p style="padding:30px;text-align:center">Não foi possível carregar o cardápio. Recarregue a página.</p>'});
+</script></body></html>
